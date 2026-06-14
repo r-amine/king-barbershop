@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>King's Barbershop | Carnet des prix & élégance</title>
+  <!-- Font Awesome 6 (icônes uniquement) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts : Inter + affinement -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F7F5F0;
+      color: #1F1E24;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* HEADER / NAV */
+    .navbar {
+      background: rgba(255, 255, 245, 0.98);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      border-bottom: 1px solid #EAE3D8;
+    }
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 14px 0;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      background: #F3EFE9;
+      border-radius: 18px;
+      padding: 6px;
+    }
+    .logo-text h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #1F1A13, #AD8B4C);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo-text p {
+      font-size: 0.7rem;
+      color: #6F6A60;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #2C2822;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-links a:hover {
+      color: #B47C2E;
+      border-bottom-color: #B47C2E;
+    }
+    .phone-btn {
+      background: #E8E2D8;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+    }
+    .phone-btn a {
+      text-decoration: none;
+      color: #1E1B16;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .phone-btn i {
+      color: #B47C2E;
+    }
+
+    /* HERO avec image */
+    .hero {
+      background: #FEFCF8;
+      padding: 50px 0 40px;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content {
+      flex: 1.2;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .hero-content h1 span {
+      color: #B47C2E;
+    }
+    .hero-desc {
+      color: #5A5550;
+      max-width: 520px;
+      margin: 20px 0;
+    }
+    .hero-badge-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      padding: 6px 18px;
+      border-radius: 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .hero-badge i {
+      color: #B47C2E;
+    }
+    .btn-reserve {
+      background: #B47C2E;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .hero-image {
+      flex: 1;
+      background: url('https://images.pexels.com/photos/3822913/pexels-photo-3822913.jpeg?auto=compress&cs=tinysrgb&w=800') center/cover no-repeat;
+      min-height: 280px;
+      border-radius: 32px;
+      box-shadow: 0 18px 28px -8px rgba(0,0,0,0.1);
+    }
+
+    /* ---------- SECTION CARNET / BOOK STYLE ---------- */
+    .tarifs-book {
+      background: #FEFAF5;
+      padding: 60px 0 70px;
+    }
+    .book-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .book-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      display: inline-block;
+      background: #F4EADF;
+      padding: 6px 28px;
+      border-radius: 100px;
+      letter-spacing: -0.2px;
+      box-shadow: inset 0 -1px 0 #E2D5C6, 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .book-header p {
+      color: #6B6258;
+      margin-top: 12px;
+    }
+
+    /* carnet style : effet livre dynamique avec grille sophistiquée */
+    .price-book {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+      perspective: 800px;
+    }
+    .price-card-book {
+      background: #FFFFFF;
+      border-radius: 28px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05), 0 0 0 1px #F0E9E1 inset, 0 0 0 2px #FFFFFF inset;
+      cursor: pointer;
+      transform: translateY(0);
+    }
+    .price-card-book:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.15), 0 0 0 1px #E3D5C5 inset;
+    }
+    .card-inner {
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .service-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: #F7F2EA;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #B47C2E;
+    }
+    .service-info h3 {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .service-info span {
+      font-size: 0.75rem;
+      color: #A0998E;
+    }
+    .price-tag {
+      background: #FBF7F0;
+      padding: 8px 16px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #2B241C;
+      letter-spacing: -0.2px;
+    }
+    /* ruban séparateur style book */
+    .book-divider {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0 12px;
+    }
+    .book-divider i {
+      color: #DDD0C0;
+      font-size: 1.2rem;
+    }
+    /* section pack intégrée élégante */
+    .pack-vintage {
+      background: linear-gradient(115deg, #2D2821 0%, #1E1B16 100%);
+      border-radius: 48px;
+      margin-top: 48px;
+      padding: 40px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #FCF9F4;
+    }
+    .pack-vintage h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+    }
+    .pack-list {
+      list-style: none;
+      margin: 18px 0;
+    }
+    .pack-list li {
+      display: flex;
+      gap: 14px;
+      margin: 12px 0;
+      align-items: center;
+    }
+    .pack-badge {
+      background: #B47C2E;
+      border-radius: 48px;
+      padding: 16px 32px;
+      text-align: center;
+    }
+    .pack-badge .old {
+      text-decoration: line-through;
+      font-size: 1rem;
+    }
+    .pack-badge .new {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    /* contact */
+    .contact-section {
+      padding: 70px 0;
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .contact-card {
+      background: white;
+      border-radius: 32px;
+      padding: 28px;
+      flex: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #EEE7DF;
+    }
+    .contact-card i {
+      font-size: 1.8rem;
+      color: #B47C2E;
+      margin-bottom: 16px;
+    }
+    .insta-link {
+      display: inline-flex;
+      gap: 12px;
+      background: #F0EAE2;
+      padding: 10px 20px;
+      border-radius: 60px;
+      text-decoration: none;
+      color: #2A241E;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      height: 260px;
+      margin-top: 12px;
+    }
+    .gallery-mini {
+      display: flex;
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .gallery-mini div {
+      flex: 1;
+      height: 150px;
+      border-radius: 28px;
+      background-size: cover;
+      background-position: center;
+      background-color: #E9E1D6;
+    }
+    footer {
+      background: #E8E2D8;
+      text-align: center;
+      padding: 32px;
+      color: #534D44;
+    }
+    @media (max-width: 700px) {
+      .price-book { gap: 18px; }
+      .pack-vintage { flex-direction: column; text-align: center; }
+      .hero-content h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-flex">
+    <div class="logo-area">
+      <img class="logo-img" src="https://instagram.ftun14-1.fna.fbcdn.net/v/t51.82787-19/539578210_17843394663564052_2924274610442226070_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmV4cGVyaW1lbnRhbCJ9&_nc_ht=instagram.ftun14-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2gENBn0lCOEpq4QU-mpZqXRbvkMMSEIyA-zAkrzow0YvRtUSkuwZv6aXWmayb2u63wQ&_nc_ohc=nbDIPPlJoBIQ7kNvwH2BbGO&_nc_gid=Xrr4b6TU0D7iGsqFrCaPww&edm=APoiHPcBAAAA&ccb=7-5&oh=00_Af8VbdC7QJjfzzoYfp1P_y5ozFsLSwl-ugBTG2FqiI8JZQ&oe=6A34E08C&_nc_sid=22de04" alt="Logo Kings">
+      <div class="logo-text">
+        <h2>KING'S BARBERSHOP</h2>
+        <p>TRADITION & MODERNITÉ</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#carnet">Nos tarifs</a>
+      <a href="#pack">Pack King's</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="phone-btn">
+      <a href="tel:+21651345207"><i class="fas fa-phone-alt"></i> +216 51 345 207</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>UN HOMME <span>PUISSANT</span><br> mérite une coupe à la hauteur</h1>
+        <p class="hero-desc">Barbier d'excellence, soins visage, massages et style affirmé. Ouvert 7j/7 de 8h à 22h.</p>
+        <div class="hero-badge-group">
+          <div class="hero-badge"><i class="fas fa-star"></i> 4.6 étoiles</div>
+          <div class="hero-badge"><i class="fas fa-scissors"></i> Experts certifiés</div>
+          <div class="hero-badge"><i class="fas fa-clock"></i> 7j/7 – 8h/22h</div>
+        </div>
+        <a href="tel:+21651345207" class="btn-reserve"><i class="fas fa-calendar-check"></i> Réserver par appel</a>
+      </div>
+      <div class="hero-image"></div>
+    </div>
+  </div>
+
+  <!-- SECTION CARNET / BOOK STYLE DYNAMIQUE -->
+  <div class="tarifs-book" id="carnet">
+    <div class="container">
+      <div class="book-header">
+        <h2><i class="fas fa-book-open"></i>  Nos tarifs  <i class="fas fa-cut"></i></h2>
+        <p>carnet d'excellence – prix transparents, services premium</p>
+      </div>
+      <div class="price-book" id="dynamicBook"></div>
+      <div class="book-divider">
+        <i class="fas fa-ellipsis-h"></i> <i class="fas fa-scissors"></i> <i class="fas fa-ellipsis-h"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACK KING'S -->
+  <div class="container" id="pack">
+    <div class="pack-vintage">
+      <div>
+        <h3><i class="fas fa-crown"></i> LE PACK KING'S</h3>
+        <ul class="pack-list">
+          <li><i class="fas fa-cut"></i> Coupe cheveux (style soigné)</li>
+          <li><i class="fas fa-beard"></i> Barbe taille précise</li>
+          <li><i class="fas fa-wind"></i> Brushing volume & élégance</li>
+          <li><i class="fas fa-spa"></i> Gommage peau nettoyée</li>
+        </ul>
+        <p><i class="fas fa-tag"></i> Total unité : 40 DT</p>
+      </div>
+      <div class="pack-badge">
+        <div class="old">40 DT</div>
+        <div class="new">30 DT</div>
+        <small>Économisez 10 DT</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT + GOOGLE MAPS -->
+  <div class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="book-header" style="margin-bottom: 20px;"><i class="fas fa-map-pin"></i> Accès & contacts</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <i class="fas fa-location-dot"></i>
+          <h4>Notre adresse</h4>
+          <p>Tunisie – King's Barbershop<br>Coin central, facile d'accès</p>
+          <a href="https://maps.app.goo.gl/Y7aqNPKjTyhFSzSj7" target="_blank" class="insta-link"><i class="fas fa-directions"></i> Google Maps</a>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-clock"></i>
+          <h4>Horaires 7j/7</h4>
+          <p><strong>8h00 → 22h00</strong> (dimanche inclus)</p>
+          <p><i class="fas fa-phone"></i> <strong>+216 51 345 207</strong></p>
+          <p><i class="fas fa-wallet"></i> Paiement sur place (espèces/carte)</p>
+        </div>
+        <div class="contact-card">
+          <i class="fab fa-instagram"></i>
+          <h4>Inspiration</h4>
+          <p>Suivez nos réalisations</p>
+          <a href="https://www.instagram.com/kings_boumhel/" target="_blank" class="insta-link"><i class="fab fa-instagram"></i> @kings_boumhel</a>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.172744515719!2d10.307174!3d36.7322439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd4900768b7273%3A0xfef6a38c565bc491!2sKing%E2%80%99s%20barbershop!5e0!3m2!1sfr!2stn!4v1712345678901!5m2!1sfr!2stn" 
+          width="100%" height="260" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="gallery-mini">
+        <div style="background-image: url('https://images.pexels.com/photos/2058209/pexels-photo-2058209.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+        <div style="background-image: url('https://images.pexels.com/photos/3997305/pexels-photo-3997305.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+        <div style="background-image: url('https://images.pexels.com/photos/3822913/pexels-photo-3822913.jpeg?auto=compress&cs=tinysrgb&w=600');"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><i class="fas fa-scissors"></i> King's Barbershop – Coupe & Barbe – Tunis</p>
+    <p>7j/7 de 8h à 22h | Appelez-nous sans engagement</p>
+    <p>© 2026 King's Barbershop – Tous droits réservés</p>
+  </div>
+</footer>
+
+<script>
+  // ========== CARNET BOOK DYNAMIQUE avec toutes les prestations (données exactes de l'image) ==========
+  const servicesBook = [
+    { name: "Coupe enfant", desc: "taille et finition", icon: "fas fa-child", price: "12 DT" },
+    { name: "Coupe adulte", desc: "style soigné", icon: "fas fa-user", price: "15 DT" },
+    { name: "Barbe", desc: "taille précise", icon: "fas fa-beard", price: "5 DT" },
+    { name: "Barbe longue", desc: "sculpture & volume", icon: "fas fa-mask", price: "8 DT" },
+    { name: "Pompe retouche", desc: "effet repousse", icon: "fas fa-spray-can-sparkles", price: "10 DT" },
+    { name: "Soins complet", desc: "cheveux + barbe", icon: "fas fa-hand-sparkles", price: "90 DT" },
+    { name: "Kératine", desc: "lissage profond", icon: "fas fa-leaf", price: "100 DT" },
+    { name: "Proféine", desc: "nutrition intense", icon: "fas fa-droplet", price: "120 DT" },
+    { name: "Collagène", desc: "régénération", icon: "fas fa-flask", price: "130 DT" },
+    { name: "Teinture", desc: "coloration cheveux", icon: "fas fa-palette", price: "140 DT" },
+    { name: "Teinture barbe", desc: "couleur naturelle", icon: "fas fa-paintbrush", price: "20 DT" },
+    { name: "Soin capillaire", desc: "hydratation", icon: "fas fa-oil-can", price: "20 DT" },
+    { name: "Mini soin visage", desc: "éclat rapide", icon: "fas fa-face-smile", price: "50 DT" },
+    { name: "Soins visage type peau", desc: "personnalisé", icon: "fas fa-face-grin-tongue-squint", price: "150 DT" },
+    { name: "Soins détoxigén", desc: "détox cutanée", icon: "fas fa-wind", price: "150 DT" },
+    { name: "Soins antifâge", desc: "lifting capillaire", icon: "fas fa-calendar-week", price: "180 DT" },
+    { name: "Soins yeux", desc: "contour décongestionnant", icon: "fas fa-eye", price: "100 DT" },
+    { name: "Hydrafacial", desc: "nettoyage haute technologie", icon: "fas fa-water", price: "200 DT" },
+    { name: "Soins des mains", desc: "gommage & soin", icon: "fas fa-hand-peace", price: "30 DT" },
+    { name: "Soins des pieds", desc: "pédicure douceur", icon: "fas fa-shoe-prints", price: "45 DT" },
+    { name: "Head massage", desc: "anti-stress crânien", icon: "fas fa-brain", price: "18 DT" },
+    { name: "Foot massage 15min", desc: "relaxation plantaire", icon: "fas fa-shoe-prints", price: "25 DT" },
+    { name: "Foot massage 30min", desc: "profond & réparateur", icon: "fas fa-walking", price: "40 DT" },
+    { name: "King's Treatment", desc: "soin signature", icon: "fas fa-crown", price: "70 DT" },
+    { name: "King's Signature", desc: "rituel complet", icon: "fas fa-gem", price: "180 DT" }
+  ];
+
+  const bookContainer = document.getElementById('dynamicBook');
+  if(bookContainer) {
+    servicesBook.forEach(service => {
+      const card = document.createElement('div');
+      card.className = 'price-card-book';
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="service-detail">
+            <div class="service-icon">
+              <i class="${service.icon}"></i>
+            </div>
+            <div class="service-info">
+              <h3>${service.name}</h3>
+              <span>${service.desc}</span>
+            </div>
+          </div>
+          <div class="price-tag">
+            ${service.price}
+          </div>
+        </div>
+      `;
+      bookContainer.appendChild(card);
+    });
+  }
+</script>
+</body>
+</html>
