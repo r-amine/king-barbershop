@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
@@ -9,6 +9,71 @@
   <!-- Google Fonts : Inter + Playfair Display -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
   <style>
+    /* ========== CSS VARIABLES ========== */
+    :root {
+      --bg-primary: #F8F6F0;
+      --bg-secondary: #FEFAF5;
+      --bg-white: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-hero: #FFFCF7;
+      --bg-nav: rgba(255, 253, 248, 0.98);
+      --bg-contact: #FEFCF8;
+      --bg-footer: #E9E1D7;
+      --bg-btn: #F2EDE6;
+      --bg-btn-hover: #E6DBCE;
+      --bg-icon: #F6F0E8;
+      --bg-price: #FBF7F0;
+      --bg-note: #F6F0E8;
+      --text-primary: #1E1B17;
+      --text-secondary: #5E564B;
+      --text-muted: #7A6E5E;
+      --text-footer: #4F463C;
+      --text-light: #9E9487;
+      --border-light: #EEE6DD;
+      --border-card: #F0E8DF;
+      --border-nav: #EADFCB;
+      --gold: #B47C2E;
+      --gold-light: #E8D5B0;
+      --gold-gradient: linear-gradient(135deg, #1F1A13, #AA7A3C);
+      --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 12px 28px -8px rgba(0, 0, 0, 0.1);
+      --pack-bg: linear-gradient(115deg, #26221C 0%, #181612 100%);
+      --hero-image: url('tools.jpg');
+    }
+
+    /* ========== DARK THEME ========== */
+    [data-theme="dark"] {
+      --bg-primary: #141210;
+      --bg-secondary: #1C1916;
+      --bg-white: #1F1C18;
+      --bg-card: #24201C;
+      --bg-hero: #1A1714;
+      --bg-nav: rgba(20, 18, 16, 0.98);
+      --bg-contact: #1C1916;
+      --bg-footer: #1A1714;
+      --bg-btn: #2E2821;
+      --bg-btn-hover: #3D352C;
+      --bg-icon: #2E2821;
+      --bg-price: #2E2821;
+      --bg-note: #2E2821;
+      --text-primary: #F0EBE4;
+      --text-secondary: #C5BDB2;
+      --text-muted: #A09588;
+      --text-footer: #B5ADA2;
+      --text-light: #8A7F72;
+      --border-light: #3A322A;
+      --border-card: #3A322A;
+      --border-nav: #3A322A;
+      --gold: #C9952E;
+      --gold-light: #D4B06A;
+      --gold-gradient: linear-gradient(135deg, #E8D5B0, #C9952E);
+      --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 12px 28px -8px rgba(0, 0, 0, 0.4);
+      --pack-bg: linear-gradient(115deg, #1A1714 0%, #0D0B0A 100%);
+      --hero-image: url('tools.jpg');
+    }
+
+    /* ========== BASE ========== */
     * {
       margin: 0;
       padding: 0;
@@ -17,9 +82,10 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #F8F6F0;
-      color: #1E1B17;
+      background: var(--bg-primary);
+      color: var(--text-primary);
       scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .container {
@@ -30,13 +96,14 @@
 
     /* ========== HEADER / NAV ========== */
     .navbar {
-      background: rgba(255, 253, 248, 0.98);
+      background: var(--bg-nav);
       backdrop-filter: blur(6px);
-      border-bottom: 1px solid #EADFCB;
+      border-bottom: 1px solid var(--border-nav);
       position: sticky;
       top: 0;
       z-index: 120;
       padding: 12px 0;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
     .nav-flex {
       display: flex;
@@ -63,14 +130,14 @@
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #1F1A13, #AA7A3C);
+      background: var(--gold-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
     .logo-text p {
       font-size: 0.55rem;
-      color: #7A6E5E;
+      color: var(--text-muted);
     }
     .nav-links {
       display: flex;
@@ -83,40 +150,81 @@
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
-      color: #2E2821;
+      color: var(--text-primary);
       font-size: 0.8rem;
-      background: #F2EDE6;
+      background: var(--bg-btn);
       padding: 6px 14px;
       border-radius: 50px;
       transition: 0.2s;
       letter-spacing: 0.3px;
     }
     .nav-links a:hover {
-      background: #E6DBCE;
-      color: #B47C2E;
+      background: var(--bg-btn-hover);
+      color: var(--gold);
     }
     .phone-btn {
-      background: #E9E1D7;
+      background: var(--bg-btn);
       padding: 6px 16px;
       border-radius: 60px;
       font-weight: 600;
       font-size: 0.8rem;
+      transition: background 0.3s ease;
     }
     .phone-btn a {
       text-decoration: none;
-      color: #1E1B16;
+      color: var(--text-primary);
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .phone-btn i {
-      color: #B47C2E;
+      color: var(--gold);
+    }
+
+    /* ========== THEME TOGGLE BUTTON ========== */
+    .theme-toggle {
+      background: var(--bg-btn);
+      border: none;
+      border-radius: 60px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      position: relative;
+      margin-left: 4px;
+    }
+    .theme-toggle:hover {
+      background: var(--bg-btn-hover);
+      transform: rotate(15deg);
+    }
+    .theme-toggle .fa-sun {
+      display: none;
+    }
+    .theme-toggle .fa-moon {
+      display: inline-block;
+    }
+    [data-theme="dark"] .theme-toggle .fa-sun {
+      display: inline-block;
+    }
+    [data-theme="dark"] .theme-toggle .fa-moon {
+      display: none;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     /* ========== HERO ========== */
     .hero {
-      background: #FFFCF7;
+      background: var(--bg-hero);
       padding: 36px 0 32px;
+      transition: background 0.3s ease;
     }
     .hero-grid {
       display: flex;
@@ -131,13 +239,14 @@
       font-size: 2.2rem;
       font-weight: 700;
       line-height: 1.2;
+      color: var(--text-primary);
     }
     .hero-content h1 span {
-      color: #B47C2E;
+      color: var(--gold);
       font-style: italic;
     }
     .hero-desc {
-      color: #5E564B;
+      color: var(--text-secondary);
       margin: 16px 0;
       font-size: 0.95rem;
     }
@@ -152,17 +261,19 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #FFFFFF;
+      background: var(--bg-white);
       padding: 5px 14px;
       border-radius: 50px;
-      border: 1px solid #EEE6DD;
+      border: 1px solid var(--border-light);
       font-size: 0.8rem;
+      color: var(--text-primary);
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
     .hero-badge i {
-      color: #B47C2E;
+      color: var(--gold);
     }
     .btn-reserve {
-      background: #B47C2E;
+      background: var(--gold);
       color: white;
       padding: 12px 24px;
       border-radius: 60px;
@@ -181,16 +292,18 @@
     .hero-image {
       width: 100%;
       height: 220px;
-      background: url('tools.jpg') center/cover no-repeat;
+      background: var(--hero-image) center/cover no-repeat;
       border-radius: 28px;
-      box-shadow: 0 12px 18px -8px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-light);
+      transition: box-shadow 0.3s ease;
     }
 
     /* ========== MENU BOOK ========== */
     .menu-book {
-      background: #FEFAF5;
+      background: var(--bg-secondary);
       padding: 60px 0 70px;
       position: relative;
+      transition: background 0.3s ease;
     }
     .menu-book::before {
       content: '';
@@ -199,7 +312,7 @@
       left: 0;
       right: 0;
       height: 6px;
-      background: linear-gradient(90deg, #B47C2E, #E8D5B0, #B47C2E);
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
       opacity: 0.3;
     }
     .menu-header {
@@ -210,17 +323,18 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.4rem;
       font-weight: 700;
-      color: #1F1A13;
+      color: var(--text-primary);
       display: inline-flex;
       align-items: center;
       gap: 16px;
+      transition: color 0.3s ease;
     }
     .menu-header h2 i {
-      color: #B47C2E;
+      color: var(--gold);
       font-size: 1.6rem;
     }
     .menu-header .subtitle {
-      color: #7A6E5E;
+      color: var(--text-muted);
       margin-top: 10px;
       font-size: 0.9rem;
       letter-spacing: 2px;
@@ -236,10 +350,10 @@
     .menu-divider .line {
       height: 1px;
       width: 60px;
-      background: linear-gradient(90deg, transparent, #D4C5B0, transparent);
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
     }
     .menu-divider i {
-      color: #B47C2E;
+      color: var(--gold);
       font-size: 0.9rem;
     }
 
@@ -262,15 +376,15 @@
     }
 
     .menu-item {
-      background: #FFFFFF;
+      background: var(--bg-card);
       border-radius: 20px;
       padding: 18px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      border: 1px solid #F0E8DF;
+      box-shadow: var(--shadow-light);
+      border: 1px solid var(--border-card);
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
       position: relative;
@@ -283,7 +397,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #B47C2E, #E8D5B0);
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
       transition: width 0.4s ease;
     }
     .menu-item:hover::after {
@@ -291,8 +405,8 @@
     }
     .menu-item:hover {
       transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.1);
-      border-color: #E0D3C0;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--gold-light);
     }
     .item-left {
       display: flex;
@@ -304,51 +418,51 @@
     .item-icon {
       width: 44px;
       height: 44px;
-      background: #F6F0E8;
+      background: var(--bg-icon);
       border-radius: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2rem;
-      color: #B47C2E;
+      color: var(--gold);
       flex-shrink: 0;
       transition: transform 0.3s ease, background 0.3s ease;
     }
     .menu-item:hover .item-icon {
       transform: rotate(6deg) scale(1.05);
-      background: #F0E8DD;
+      background: var(--bg-btn-hover);
     }
     .item-info h3 {
       font-weight: 700;
       font-size: 0.95rem;
-      color: #1F1A13;
+      color: var(--text-primary);
       transition: color 0.3s ease;
     }
     .menu-item:hover .item-info h3 {
-      color: #B47C2E;
+      color: var(--gold);
     }
     .item-info span {
       font-size: 0.7rem;
-      color: #9E9487;
+      color: var(--text-light);
       display: block;
       margin-top: 2px;
       letter-spacing: 0.2px;
     }
     .item-price {
-      background: #FBF7F0;
+      background: var(--bg-price);
       padding: 5px 16px;
       border-radius: 40px;
       font-weight: 800;
       font-size: 1.1rem;
-      color: #2B241C;
+      color: var(--text-primary);
       white-space: nowrap;
       transition: all 0.3s ease;
       border: 1px solid transparent;
     }
     .menu-item:hover .item-price {
-      background: #B47C2E;
+      background: var(--gold);
       color: #FFFFFF;
-      border-color: #B47C2E;
+      border-color: var(--gold);
     }
 
     .menu-item {
@@ -389,18 +503,18 @@
     .menu-footer {
       text-align: center;
       margin-top: 40px;
-      color: #A09588;
+      color: var(--text-light);
       font-size: 0.8rem;
       letter-spacing: 0.5px;
     }
     .menu-footer i {
-      color: #B47C2E;
+      color: var(--gold);
       margin: 0 6px;
     }
 
     /* ========== PACK KING'S ========== */
     .pack-vintage {
-      background: linear-gradient(115deg, #26221C 0%, #181612 100%);
+      background: var(--pack-bg);
       border-radius: 40px;
       margin: 40px 0 30px;
       padding: 32px 24px;
@@ -408,6 +522,7 @@
       flex-direction: column;
       gap: 28px;
       text-align: center;
+      transition: background 0.3s ease;
     }
     @media (min-width: 720px) {
       .pack-vintage {
@@ -428,7 +543,7 @@
       color: #FEF7ED;
     }
     .pack-vintage h3 i {
-      color: #B47C2E;
+      color: var(--gold);
     }
     .pack-list {
       list-style: none;
@@ -445,11 +560,11 @@
       .pack-list li { justify-content: flex-start; }
     }
     .pack-list li i {
-      color: #B47C2E;
+      color: var(--gold);
       width: 20px;
     }
     .pack-badge {
-      background: #B47C2E;
+      background: var(--gold);
       border-radius: 50px;
       padding: 14px 20px;
       text-align: center;
@@ -468,7 +583,8 @@
     /* ========== CONTACT REDESIGNÉ ========== */
     .contact-section {
       padding: 60px 0 70px;
-      background: #FEFCF8;
+      background: var(--bg-contact);
+      transition: background 0.3s ease;
     }
     .contact-header {
       text-align: center;
@@ -478,16 +594,17 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
       font-weight: 700;
-      color: #1F1A13;
+      color: var(--text-primary);
       display: inline-flex;
       align-items: center;
       gap: 16px;
+      transition: color 0.3s ease;
     }
     .contact-header h2 i {
-      color: #B47C2E;
+      color: var(--gold);
     }
     .contact-header .contact-sub {
-      color: #7A6E5E;
+      color: var(--text-muted);
       margin-top: 8px;
       font-size: 0.9rem;
       letter-spacing: 1px;
@@ -502,10 +619,10 @@
     .contact-divider .line {
       height: 1px;
       width: 50px;
-      background: linear-gradient(90deg, transparent, #D4C5B0, transparent);
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
     }
     .contact-divider i {
-      color: #B47C2E;
+      color: var(--gold);
       font-size: 0.8rem;
     }
 
@@ -523,10 +640,10 @@
     }
 
     .contact-card {
-      background: #FFFFFF;
+      background: var(--bg-card);
       border-radius: 28px;
       padding: 32px 28px;
-      border: 1px solid #F0E8DF;
+      border: 1px solid var(--border-card);
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
       overflow: hidden;
@@ -544,7 +661,7 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #B47C2E, #E8D5B0);
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -553,20 +670,20 @@
     }
     .contact-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.08);
-      border-color: #E0D3C0;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--gold-light);
     }
 
     .contact-icon {
       width: 60px;
       height: 60px;
-      background: #F6F0E8;
+      background: var(--bg-icon);
       border-radius: 50px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 1.6rem;
-      color: #B47C2E;
+      color: var(--gold);
       margin-bottom: 18px;
       transition: all 0.3s ease;
     }
@@ -576,7 +693,7 @@
       }
     }
     .contact-card:hover .contact-icon {
-      background: #B47C2E;
+      background: var(--gold);
       color: #FFFFFF;
       transform: scale(1.05) rotate(-3deg);
     }
@@ -584,50 +701,46 @@
     .contact-card h4 {
       font-size: 1.2rem;
       font-weight: 700;
-      color: #1F1A13;
+      color: var(--text-primary);
       margin-bottom: 12px;
     }
     .contact-card p {
-      color: #5E564B;
+      color: var(--text-secondary);
       font-size: 0.9rem;
       line-height: 1.6;
-    }
-    .contact-card .highlight {
-      color: #B47C2E;
-      font-weight: 700;
     }
     .contact-card .detail-row {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-top: 10px;
-      color: #5E564B;
+      color: var(--text-secondary);
       font-size: 0.9rem;
     }
     .contact-card .detail-row i {
-      color: #B47C2E;
+      color: var(--gold);
       width: 20px;
       font-size: 0.9rem;
     }
     .contact-card .detail-row .phone-link {
-      color: #1F1A13;
+      color: var(--text-primary);
       font-weight: 700;
       text-decoration: none;
       transition: color 0.2s;
     }
     .contact-card .detail-row .phone-link:hover {
-      color: #B47C2E;
+      color: var(--gold);
     }
 
     .contact-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #F6F0E8;
+      background: var(--bg-btn);
       padding: 10px 24px;
       border-radius: 50px;
       text-decoration: none;
-      color: #1F1A13;
+      color: var(--text-primary);
       font-weight: 600;
       font-size: 0.85rem;
       margin-top: 16px;
@@ -635,13 +748,13 @@
       border: 1px solid transparent;
     }
     .contact-btn:hover {
-      background: #B47C2E;
+      background: var(--gold);
       color: #FFFFFF;
       transform: translateX(4px);
-      border-color: #B47C2E;
+      border-color: var(--gold);
     }
     .contact-btn i {
-      color: #B47C2E;
+      color: var(--gold);
       transition: color 0.3s ease;
     }
     .contact-btn:hover i {
@@ -649,8 +762,8 @@
     }
 
     .insta-btn {
-      background: #F6F0E8;
-      color: #1F1A13;
+      background: var(--bg-btn);
+      color: var(--text-primary);
     }
     .insta-btn:hover {
       background: #E1306C;
@@ -677,13 +790,13 @@
       border-radius: 28px;
       overflow: hidden;
       height: 280px;
-      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.06);
-      border: 1px solid #F0E8DF;
-      transition: 0.4s ease;
+      box-shadow: var(--shadow-light);
+      border: 1px solid var(--border-card);
+      transition: all 0.4s ease;
     }
     .map-wrapper:hover {
       transform: scale(1.01);
-      box-shadow: 0 12px 32px -8px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-hover);
     }
     .map-wrapper iframe {
       width: 100%;
@@ -701,14 +814,14 @@
       height: 130px;
       background-size: cover;
       background-position: center;
-      background-color: #DCD0C2;
+      background-color: var(--border-card);
       transition: all 0.4s ease;
-      border: 1px solid #F0E8DF;
+      border: 1px solid var(--border-card);
     }
     .gallery-wrapper .gal-item:hover {
       transform: scale(1.03);
-      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.12);
-      border-color: #B47C2E;
+      box-shadow: var(--shadow-hover);
+      border-color: var(--gold);
     }
     .gallery-wrapper .gal-item:first-child {
       grid-column: 1 / -1;
@@ -719,22 +832,24 @@
       text-align: center;
       margin-top: 32px;
       padding: 16px 24px;
-      background: #F6F0E8;
+      background: var(--bg-note);
       border-radius: 60px;
       font-size: 0.8rem;
-      color: #7A6E5E;
+      color: var(--text-muted);
+      transition: background 0.3s ease, color 0.3s ease;
     }
     .note-bottom i {
-      color: #B47C2E;
+      color: var(--gold);
       margin-right: 8px;
     }
 
     footer {
-      background: #E9E1D7;
+      background: var(--bg-footer);
       text-align: center;
       padding: 28px 20px;
       font-size: 0.8rem;
-      color: #4F463C;
+      color: var(--text-footer);
+      transition: background 0.3s ease, color 0.3s ease;
     }
   </style>
 </head>
@@ -749,8 +864,14 @@
         <p>BARBIER D'EXCEPTION</p>
       </div>
     </div>
-    <div class="phone-btn">
-      <a href="tel:+21651345207"><i class="fas fa-phone-alt"></i> Appeler</a>
+    <div class="nav-right">
+      <div class="phone-btn">
+        <a href="tel:+21651345207"><i class="fas fa-phone-alt"></i> Appeler</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+      </button>
     </div>
     <div class="nav-links">
       <a href="#menu">Menu</a>
@@ -910,11 +1031,26 @@
 </footer>
 
 <script>
+  // ========== THEME TOGGLE ==========
+  const toggleBtn = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  
+  // Vérifier si un thème est sauvegardé
+  let currentTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', currentTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const newTheme = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
   // ========== DONNÉES DU MENU ==========
   const menuData = [
     { name: "Coupe enfant", desc: "finition douce", icon: "fas fa-child", price: "12 DT" },
     { name: "Coupe adulte", desc: "style moderne", icon: "fas fa-user", price: "15 DT" },
-    { name: "Barbe", desc: "taille précise", icon: "fas fa-beard", price: "5 DT" },
+    { name: "Barbe", desc: "taille précise", icon: "fas fa-user", price: "5 DT" },
     { name: "Barbe longue", desc: "sculpture volume", icon: "fas fa-mask", price: "8 DT" },
     { name: "Pompe retouche", desc: "stimulateur repousse", icon: "fas fa-spray-can-sparkles", price: "10 DT" },
     { name: "Soins complet", desc: "cheveux + barbe", icon: "fas fa-hand-sparkles", price: "90 DT" },
@@ -922,7 +1058,7 @@
     { name: "Proféine", desc: "nutrition intense", icon: "fas fa-droplet", price: "120 DT" },
     { name: "Collagène", desc: "régénération", icon: "fas fa-flask", price: "130 DT" },
     { name: "Teinture", desc: "coloration cheveux", icon: "fas fa-palette", price: "140 DT" },
-    { name: "Teinture barbe", desc: "couleur naturelle barbe", icon: "fas fa-paintbrush", price: "20 DT" },
+    { name: "Teinture barbe", desc: "couleur naturelle barbe", icon: "fas fa-palette", price: "20 DT" },
     { name: "Soin capillaire", desc: "hydratation intense", icon: "fas fa-oil-can", price: "20 DT" },
     { name: "Mini soin visage", desc: "express éclat", icon: "fas fa-face-smile", price: "50 DT" },
     { name: "Soins visage type peau", desc: "personnalisé", icon: "fas fa-face-grin-tongue-squint", price: "150 DT" },
